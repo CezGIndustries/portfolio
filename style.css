@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+}
+
+#screen {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CMD */
+
+#cmd {
+    display: flex;
+    height: 50%;
+    width: 50%;
+    flex-direction: column;
+    justify-content: end;
+}
+
+#cmd-responses {
+    display: flex;
+    height: 90%;
+    width: 100%;
+    flex-direction: column-reverse;
+    overflow-y: scroll;
+}
+
+.cmd-out {
+    height: 10%;
+    width: 100%;
+    min-height: 30px;
+    background-color: blue;
+}
+
+#cmd-input {
+    display: flex;
+    height: 10%;
+    width: 100%;
+}
+
+#cmd-input-style {
+    height: 100%;
+    width: 10%;
+    background-color: green;
+}
+
+#user-input, #user-input:focus {
+    height: 100%;
+    width: 90%;
+    border: none;
+    outline: none;
+}
+
+/* END CMD */
+
+/* MENU */
+
+/* END MENU */
