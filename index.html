@@ -5,23 +5,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style/default.css">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+    <link rel="stylesheet" href="./style/cmd.css">
     <title>Portfolio - V##### Benjamin</title>
 </head>
 
 <body>
-    <!-- <div id="menu">Menu</div> -->
-    <div id="screen">
-        <div id="cmd">
-            <div id="cmd-responses"></div>
-            <div id="cmd-input">
-                <div id="cmd-input-style">Ins.Style</div>
-                <input type="text" name="user-input" id="user-input" placeholder="Enter a command" maxlength="128">
+    <div id="root">
+        <div id="cmd-container">
+            <div id="cmd">
+                <div id="cmd-header">
+                    <div id="cmd-header-title">
+                        <span>Terminal</span>
+                    </div>
+                </div>
+                <div id="cmd-content">
+                    <div id="cmd-content-container">
+                        <div id="cmd-content-welcome" class="cmd-content-both">
+                            <span class="cmd-content-welcome-text welcome-text-font-size">Bienvenue sur mon portfolio !</span>
+                            <span class="cmd-content-welcome-text">
+                                Ce portfolio possède toutes mes informations professionnels.</br>
+                                Naviguez, avec les commandes linux ainsi que de nouvelles commandes, dans cette console
+                                de commande pour les retrouver.
+                            </span>
+                            <span class="cmd-content-welcome-text">Taper help pour plus d'informations.</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="cmd-input">
+                    <div id="cmd-input-prefix">
+                        <span>Vernet Benjamin/<span id="cmd-input-folder"></span>></span>
+                    </div>
+                    <div id="cmd-input-text">
+                        <input type="text" id="cmd-input-text-input" placeholder="Entrer une commande">
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 </body>
 
 </html>
 
-<script src="script.js"></script>
+<script src="script.js" type="module"></script>

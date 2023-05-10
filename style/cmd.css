@@ -1,0 +1,149 @@
+:root {
+    --font-size: 1em;
+}
+
+#cmd-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#cmd {
+    display: flex;
+    width: 60%;
+    height: 60%;
+    flex-direction: column;
+}
+
+#cmd-header {
+    background: #111111;
+    display: flex;
+    width: 100%;
+    height: 6%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px 15px 0 0;
+}
+
+#cmd-header-title {
+    font-size: calc(var(--font-size) + 0.1em);
+}
+
+#cmd-content {
+    display: flex;
+    width: 100%;
+    height: 84%;
+}
+
+#cmd-content-container {
+    background-color: #555555;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    overflow-y: auto;
+
+}
+
+.cmd-content-both {
+    display: flex;
+    width: 98.5%;
+    margin: 0 0.75%;
+    flex-direction: column;
+}
+
+#cmd-content-welcome {}
+
+.cmd-content-welcome-text {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.3em;
+    font-size: calc(var(--font-size) + 0.15em);
+}
+
+.welcome-text-font-size {
+    font-size: calc(var(--font-size) + 0.75em);
+}
+
+.cmd-content-output {
+    display: flex;
+    margin-top: 0.7em;
+    margin-bottom: 0.3em;
+}
+
+.cmd-content-output-line {
+    padding-bottom: 0.75%;
+}
+
+.cmd-content-output-text {}
+
+.cmd-content-output-error-true {
+    color: #ff0000;
+}
+
+#cmd-input {
+    background-color: #212121;
+    display: flex;
+    width: 100%;
+    height: 10%;
+    align-items: center;
+    border-radius: 0 0 15px 15px;
+}
+
+#cmd-input-prefix {
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: flex-end;
+    padding: 0 0.25em;
+    font-size: var(--font-size);
+}
+
+#cmd-input-text {
+    display: flex;
+    flex: 1 1 auto;
+    height: 100%;
+}
+
+#cmd-input-text-input {
+    background-color: rgba(255, 255, 255, 0);
+    width: 100%;
+    height: 100%;
+    font-size: var(--font-size);
+    border: none;
+    outline: none;
+}
+
+@media (max-width: 850px) {
+    :root {
+        --font-size: 0.95em;
+    }
+}
+
+@media (max-width: 775px) {
+    :root {
+        --font-size: 0.9em;
+    }
+}
+
+@media (max-width: 700px) {
+    :root {
+        --font-size: 0.85em;
+    }
+}
+
+@media (max-width: 625px) {
+    :root {
+        --font-size: 0.8em;
+    }
+}
+
+@media (max-width: 550px) {
+    :root {
+        --font-size: 0.75em;
+    }
+}
+
+@media (max-width: 500px) {}

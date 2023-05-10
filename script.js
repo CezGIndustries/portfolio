@@ -1,57 +1,56 @@
-const language = ["FR", "EN"]
+import { commands } from "./commands.js";
+import { CURRENT_FOLDER, cmdContent, cmdInput, cmdFolder } from "./globalelements.js";
 
-const commands = {
+cmdFolder.innerHTML = CURRENT_FOLDER.join("/");
 
-}
-
-function getLanguage() {
-    const cookies = document.cookie.split(";");
-    for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i].split("=")
-        if (cookie[0] == "language") {
-            return cookie[1]
-        }
+cmdInput.addEventListener("keydown", function (e) {
+    switch (e.key) {
+        case "Enter":
+            const userInput = this.value;
+            const userInputTab = userInput.split(" ");
+            const command = userInputTab.shift();
+            if (command in commands && commands[command].available) {
+                const response = commands[command].function(userInputTab);
+                addOutputLine(
+                    userInput,
+                    response["text"],
+                    response["error"]
+                );
+            } else {
+                addOutputLine(
+                    userInput,
+                    `Command not found: ${command}`,
+                    true
+                );
+            }
+            this.value = "";
+            cmdFolder.textContent = CURRENT_FOLDER.join("/");
+            break;
+        case "ArrowUp":
+            e.preventDefault();
+            break;
+        case "ArrowDown":
+            e.preventDefault();
+            break;
+        case "Tab":
+            e.preventDefault();
+            break;
+        default:
+            // console.log(e.key);
+            break;
     }
-    return null
-}
+});
 
-function setLanguage() {
-
-}
-
-function addUserInput() {
-    const user_input = document.getElementById('user-input')
-    user_input.addEventListener("keydown", (e) => {
-        const user_input_value = document.getElementById('user-input').value
-        switch (e.key) {
-            case "Enter":
-                if (user_input_value !== "") {
-                    const cmd_response = document.getElementById("cmd-responses")
-                    const element = createElement("div", "cmd-out", user_input_value)
-                    cmd_response.replaceChildren(element, ...cmd_response.children)
-                }
-                break;
-            case "Tab":
-                e.preventDefault()
-                break;
-            case "ArrowUp":
-                console.log("Up")
-                break;
-            case "ArrowDown":
-                console.log("Down")
-                break;
-        }
-    })
-}
-
-function createElement(type, classes, value) {
-    const element = document.createElement(type)
-    element.classList.add(classes)
-    element.textContent = value
-    return element
-}
-
-addUserInput()
-
-
-// language.includes(onPage())
+function addOutputLine(command, text, error = false) {
+    cmdContent.innerHTML += `\
+    <div class="cmd-content-output cmd-content-both">\
+        <div class="cmd-content-output-line">\
+            <span>Vernet Benjamin/${CURRENT_FOLDER}> ${command}</span>\
+        </div>\
+        <div class="cmd-content-output-text">\
+            <span class="cmd-content-output-error-${error}">${text}</span>\
+        </div>\
+    </div>\
+    `;
+    cmdContent.scrollTop = cmdContent.scrollHeight;
+};
