@@ -53,6 +53,14 @@ export const commands = {
         },
         "function": commandLs,
     },
+    "cat": {
+        "available": true,
+        "description": {
+            "en": "Display the content of a file",
+            "fr": "Affiche le contenu d'un fichier"
+        },
+        "function": commandCat,
+    }
 }
 
 function commandHelp(argumentTab) {
@@ -127,6 +135,30 @@ function commandLs(argumentTab) {
         ls += `${file}</br>`;
     }
     return goodResponse(ls);
+}
+
+function commandCat(argumentTab) {
+    if (argumentTab.length > 1) {
+        return badResponse("Too many arguments");
+    }
+    if (argumentTab.length === 0) {
+        return badResponse("Missing argument");
+    }
+    if (CURRENT_FOLDER.length === 0 && argumentTab[0] in fileTree) {
+        if (fileTree[argumentTab[0]].type === "file") {
+            return goodResponse(fileTree[argumentTab[0]].content[LANG]);
+        } else {
+            return badResponse("Not a file")
+        }
+    }
+    if (CURRENT_FOLDER.length === 1 && argumentTab[0] in fileTree[CURRENT_FOLDER[0]]) {
+        if (fileTree[CURRENT_FOLDER[0]][argumentTab[0]].type === "file") {
+            return goodResponse(fileTree[CURRENT_FOLDER[0]][argumentTab[0]].content[LANG]);
+        } else {
+            return badResponse("Not a file")
+        }
+    }
+    return badResponse("File not found")
 }
 
 // Response for the cmd
